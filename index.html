@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapas Mentais · Fisiologia Médica</title>
+<style>
+:root{--bg:#f6f5f1;--fg:#1f2328;--mut:#5f6670;--card:#fff;--bd:#d9d8d0}
+@media (prefers-color-scheme:dark){:root{--bg:#141517;--fg:#ececec;--mut:#9aa0a8;--card:#202225;--bd:#383b40}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1000px;margin:0 auto;padding:14px}
+h1{font-size:20px;margin:0 0 10px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+select,input,button{font:inherit;font-size:14px;color:var(--fg);background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:7px 10px}
+input{flex:1;min-width:150px}
+#prog{font-size:13px;color:var(--mut);min-width:170px}
+#prog i{display:block;height:5px;background:var(--bd);border-radius:3px;margin-top:3px}
+#prog b{display:block;height:5px;background:#1e8449;border-radius:3px;width:0}
+#res{position:relative}
+#res div{position:absolute;z-index:9;left:0;right:0;background:var(--card);border:1px solid var(--bd);border-radius:8px;margin-top:4px;max-height:260px;overflow:auto}
+#res button{display:block;width:100%;text-align:left;border:0;border-radius:0;border-bottom:1px solid var(--bd)}
+#res small{color:var(--mut)}
+#bc{margin:12px 0 4px;font-size:13px}
+#bc button{border:0;background:none;padding:2px 4px;color:var(--mut);cursor:pointer}
+#bc button:last-child{color:var(--fg);font-weight:600}
+.stage{position:relative;height:640px}
+svg{position:absolute;inset:0;width:100%;height:100%}
+.n,.ctr{position:absolute;transform:translate(-50%,-50%);width:150px;text-align:center;padding:9px 8px;border-radius:14px;cursor:pointer;border:2px solid var(--c);background:var(--card);box-shadow:0 2px 8px #0002;transition:transform .15s,background .15s}
+.n{animation:pop .35s both;animation-delay:calc(var(--i)*45ms)}
+.n:hover{transform:translate(-50%,-50%) scale(1.07);background:color-mix(in srgb,var(--c) 14%,var(--card))}
+.n.on{background:var(--c);color:#fff}
+.n.on small,.n.on i{color:#fff}
+.n.dn::after{content:"✓";position:absolute;top:-8px;right:-6px;background:#1e8449;color:#fff;border-radius:50%;width:20px;height:20px;font-size:12px;line-height:20px}
+.n b{font-size:14px;display:block}
+.n small{color:var(--mut);font-size:12px}
+.n i{position:absolute;top:-8px;left:-6px;background:#b7950b;color:#fff;border-radius:50%;width:20px;height:20px;font-size:13px;font-style:normal;line-height:20px}
+.ctr{left:50%;top:50%;width:190px;background:var(--c);color:#fff;font-weight:700;padding:16px 10px;font-size:15px}
+@keyframes pop{from{opacity:0;transform:translate(-50%,-50%) scale(.6)}}
+#pn .card{background:var(--card);border:1px solid var(--bd);border-left:6px solid var(--c);border-radius:12px;padding:14px 16px;margin-top:8px}
+#pn h2{margin:0 0 6px;font-size:18px}
+.tag{background:#b7950b;color:#fff;font-size:11px;border-radius:6px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.chips button{border-color:var(--c);cursor:pointer}
+label{font-size:13px;color:var(--mut);cursor:pointer}
+@media (max-width:720px){.stage{height:auto;display:flex;flex-direction:column;gap:8px}svg{display:none}.n,.ctr{position:static;transform:none!important;width:auto;animation:none}.n{text-align:left}}
+</style></head><body><main>
+<h1>🩸 Mapas Mentais · Fisiologia Médica</h1>
+<div class="bar"><select id="sl"></select><input id="q" type="search" placeholder="Buscar em todos os capítulos…"><div id="prog"></div></div>
+<div id="res"></div>
+<nav id="bc"></nav>
+<div class="stage" id="st"></div>
+<section id="pn"></section>
+</main>
+<!-- ===== CAPÍTULOS: cada capítulo é um bloco <script>. Para adicionar, cole um novo bloco abaixo ===== -->
+<script>
+/* Cap. 33 · Guyton & Hall · Eritrocitos, anemia y policitemia
+   Nó: {t:título, d:descrição, k:[filhos], x:1 = complemento fora do capítulo}
+   Ramo principal: {c:cor} */
+window.CHAPTERS=window.CHAPTERS||[];
+window.CHAPTERS.push({id:"cap33",title:"Cap. 33 · Eritrócitos, anemia e policitemia",sub:"Guyton & Hall, Unidade VI: Células sanguíneas, imunidade e coagulação",k:[
+{t:"🩸 Eritrócitos",c:"#c0392b",d:"Células mais abundantes do sangue; transportam O₂ ligado à hemoglobina.",k:[
+{t:"Funções",d:"1) Transporte de Hb (livre no plasma, ~3% seria filtrada nos capilares/glomérulo). 2) Anidrase carbônica. 3) Tampão ácido-base.",k:[
+{t:"Anidrase carbônica",d:"Catalisa CO₂ + H₂O ⇌ H₂CO₃, acelerando a reação milhares de vezes. Permite transportar CO₂ como HCO₃⁻ e eliminá-lo nos pulmões."},
+{t:"Tampão ácido-base",d:"A Hb é excelente tampão: os eritrócitos respondem pela maior parte do poder tampão do sangue total."}]},
+{t:"Forma e tamanho",d:"Disco bicôncavo, ⌀ ~7,8 µm; espessura 2,5 µm na periferia e ≤1 µm no centro; volume 90–95 µm³. O excesso de membrana permite deformar nos capilares sem romper."},
+{t:"Concentração",d:"Homem: 5.200.000/mm³ (±300.000). Mulher: 4.700.000 (±300.000). Mais eritrócitos em quem vive em altitude."},
+{t:"Hemoglobina e hematócrito",d:"Máx. ~34 g de Hb/100 ml de célula (limite metabólico). Ht normal 40–45%. Hb: 15 g/100 ml no homem e 14 na mulher."},
+{t:"Capacidade de O₂",d:"1 g de Hb liga 1,34 ml de O₂ (100% de saturação). Homem ~20 ml O₂/100 ml de sangue; mulher ~19 ml."},
+{t:"Índices hematimétricos",x:1,d:"VCM (tamanho), HCM e CHCM (conteúdo de Hb). Referências típicas: VCM 80–100 fL; HCM 27–33 pg; CHCM 32–36 g/dl. Variam por laboratório; base da classificação das anemias."}]},
+{t:"🏭 Produção",c:"#d35400",d:"A eritropoese: onde e como se formam os eritrócitos.",k:[
+{t:"Locais ao longo da vida",d:"Embrião: saco vitelino. 2º trimestre: fígado (também baço e linfonodos). Último mês e depois do nascimento: exclusivamente medula óssea."},
+{t:"Medula óssea por idade",d:"Até ~5 anos: quase todos os ossos. Após ~20 anos: ossos longos (úmero, tíbia) viram gordura. Depois: vértebras, esterno, costelas e ílio, cada vez menos produtivos com a idade."},
+{t:"Linhagem celular",d:"MHSC (célula-tronco hematopoiética multipotente) → CFU-S → CFU-E (comprometida) → proeritroblasto.",k:[
+{t:"Proeritroblasto",d:"Primeira célula identificável da série eritrocítica. Origina eritroblastos em múltiplas divisões."},
+{t:"Eritroblasto basófilo",d:"1ª geração: cora-se com corantes básicos."},
+{t:"Eritroblasto policromatófilo",d:"A Hb aparece e chega a ~34%; o núcleo condensa e depois é expulso."},
+{t:"Reticulócito",d:"Ainda tem resto basófilo (Golgi, mitocôndrias, organelas). Sai da medula por diapedese; matura em 1–2 dias; <1% dos eritrócitos circulantes.",k:[
+{t:"Reticulocitose",x:1,d:"Reticulócitos altos no sangue indicam medula respondendo (ex.: hemorragia, hemólise); baixos sugerem falha de produção."}]}]},
+{t:"Indutores",d:"Indutores do crescimento (ex.: interleucina 3) estimulam proliferação. Indutores da diferenciação levam a célula ao tipo final. Dependem de fatores externos à medula, como a hipóxia."}]},
+{t:"📈 Eritropoetina (EPO)",c:"#b7950b",d:"O regulador central: hipóxia → EPO → mais eritrócitos.",k:[
+{t:"O que é",d:"Glicoproteína circulante, massa molecular ~34.000. Sem EPO, a hipóxia quase não estimula a produção."},
+{t:"Onde é produzida",d:"~90% nos rins (provavelmente células intersticiais tipo fibroblasto, perto dos túbulos); ~10% no fígado e outros. Noradrenalina, adrenalina e prostaglandinas também estimulam."},
+{t:"Mecanismo molecular",d:"Hipóxia renal → HIF-1 (fator 1 induzível por hipóxia) → liga-se ao elemento de resposta à hipóxia no gene da EPO → ↑ transcrição de mRNA → ↑ síntese de EPO."},
+{t:"O que a estimula",d:"O que importa é o O₂ entregue aos tecidos, não a concentração de eritrócitos. Causas: volume sanguíneo baixo, anemia, Hb baixa, mau fluxo sanguíneo, doenças pulmonares, altitude.",k:[
+{t:"Altitude",d:"Ar com pouco O₂ → hipóxia tecidual → mais EPO → mais eritrócitos (policitemia fisiológica)."},
+{t:"Insuficiência cardíaca",d:"Fluxo tecidual reduzido causa hipóxia e estimula a eritropoese."}]},
+{t:"Cronologia",d:"EPO sobe em minutos/horas, com pico em <24 h. Eritrócitos novos só aparecem após ~5 dias. Quando o O₂ normaliza, a EPO cai ao nível de manutenção."},
+{t:"Ação",d:"Estimula a formação de proeritroblastos a partir das células precursoras e acelera a passagem pelos estágios eritroblásticos. Com EPO alta, a produção pode subir 10× ou mais."},
+{t:"Sem rins",d:"Nefropatia grave ou nefrectomia → anemia severa: o fígado (~10% da EPO) forma só 1/3 a 1/2 dos eritrócitos necessários."},
+{t:"EPO na clínica",x:1,d:"Anemia da doença renal crônica: deficiência de EPO, tratada com EPO recombinante. Tumores secretores de EPO causam policitemia secundária."}]},
+{t:"💊 Maturação: B12 e folato",c:"#1e8449",d:"Ambos são essenciais à síntese de DNA (trifosfato de timidina).",k:[
+{t:"Consequência da falta",d:"Divisão nuclear falha → macrócitos/megaloblastos: grandes, frágeis, irregulares; vida de ⅓ a ½ do normal."},
+{t:"Vitamina B₁₂",d:"Reserva no fígado: 3–4 anos de absorção deficiente até surgir anemia. Necessidade diária mínima: 1–3 µg. Absorção depende do fator intrínseco."},
+{t:"Anemia perniciosa",d:"Mucosa gástrica atrófica não produz fator intrínseco (células parietais).",k:[
+{t:"Passo 1",d:"Fator intrínseco liga-se à B₁₂ no alimento e a protege da digestão."},
+{t:"Passo 2",d:"Complexo liga-se a receptores da borda em escova do íleo."},
+{t:"Passo 3",d:"Absorvido por pinocitose e levado ao sangue."}]},
+{t:"Ácido fólico",d:"Em verduras, frutas e carnes (fígado); destruído pelo cozimento. Esprue (má absorção intestinal) compromete folato e B₁₂."},
+{t:"Outras causas",d:"Gastrectomia total (sem fator intrínseco) e esprue intestinal."}]},
+{t:"🧬 Hemoglobina e ferro",c:"#117a8b",d:"Síntese da Hb, ligação ao O₂ e metabolismo do ferro.",k:[
+{t:"Síntese da Hb",d:"2 succinil-CoA + 2 glicinas → pirrol; 4 pirróis → protoporfirina IX; + Fe²⁺ → heme; heme + globina → cadeia (α ou β); 2α + 2β → Hb A (PM 64.458).",k:[
+{t:"Estrutura",d:"Cada cadeia (~16.000) tem 1 heme com 1 Fe: 4 Fe e 4 O₂ (8 átomos de O) por molécula."}]},
+{t:"Ligação reversível ao O₂",d:"O O₂ liga-se por ligação de coordenação frágil ao Fe e é liberado nos tecidos, onde a PO₂ é baixa. Não vira O₂ iônico."},
+{t:"Hb falciforme (molecular)",d:"Na cadeia β, a valina substitui o ácido glutâmico. Com pouco O₂, forma cristais longos (~15 µm) que deformam e rompem a célula."},
+{t:"Ferro total",d:"4–5 g: 65% na Hb; ~4% mioglobina; 1% outros compostos heme; 0,1% ligado à transferrina; 15–30% armazenado."},
+{t:"Transporte e depósito",d:"Apotransferrina (bile) liga Fe no intestino → transferrina plasmática → receptores de eritroblastos (endocitose). Depósito: ferritina (apoferritina 460.000 Da) e hemossiderina (insolúvel).",k:[
+{t:"Ferritina e transferrina no exame",x:1,d:"Ferritina baixa = reserva depletada (ferropenia). Hepcidina hepática regula a absorção de ferro (liberação intestinal e reciclagem)."}]},
+{t:"Absorção regulada",d:"Muito lenta (poucos mg/dia). Reservas cheias → ↓ absorção; reservas vazias → pode ↑ 5× ou mais."},
+{t:"Perdas diárias",d:"Homem ~0,6 mg/dia (fezes). Mulher: com menstruação, média ~1,3 mg/dia."}]},
+{t:"⏳ Ciclo vital: 120 dias",c:"#2e5fa8",d:"Sem núcleo, mitocôndrias ou retículo endoplasmático, mas com enzimas citoplasmáticas ativas.",k:[
+{t:"Metabolismo",d:"Metabolizam glicose e formam ATP; mantêm flexibilidade da membrana, transporte iônico, Fe em estado ferroso e evitam oxidação de proteínas."},
+{t:"Envelhecimento",d:"Enzimas se esgotam → célula frágil → rompe ao passar por pontos rígidos, como a polpa vermelha do baço (espaços de ~3 µm)."},
+{t:"Destruição pelos macrófagos",d:"Células de Kupffer, baço e medula fagocitam. O ferro volta ao plasma (transferrina/ferritina) e a porfirina vira bilirrubina, excretada na bile.",k:[
+{t:"Hemólise e icterícia",x:1,d:"Hemólise aumentada eleva a bilirrubina indireta (não conjugada) e causa icterícia."}]},
+{t:"Sem baço",d:"Aumenta o número de eritrócitos anormais velhos na circulação."}]},
+{t:"📉 Anemias",c:"#7d3c98",d:"Anemia = deficiência de hemoglobina (poucos eritrócitos ou pouca Hb em cada um).",k:[
+{t:"Perda de sangue",d:"Hemorragia aguda: plasma reposto em 1–3 dias; eritrócitos em 3–6 semanas. Perda crônica: anemia hipocrômica microcítica por falta de ferro."},
+{t:"Aplásica",d:"Falência da medula: radiação, quimioterapia, benzeno/inseticidas, autoimune ou idiopática (metade dos casos). Tratamento: transfusões ou transplante de medula."},
+{t:"Megaloblástica",d:"Falta de B₁₂ ou folato (perniciosa, gastrectomia, esprue): megaloblastos frágeis."},
+{t:"Hemolítica",d:"Membranas frágeis; as células rompem nos capilares, sobretudo no baço.",k:[
+{t:"Esferocitose hereditária",d:"Eritrócitos pequenos e esféricos, sem excesso de membrana; rompem sob compressão (polpa esplênica)."},
+{t:"Anemia falciforme",d:"0,3–1% de africanos ocidentais/afrodescendentes. Hb S com cadeias β defeituosas. Crise falciforme: hipóxia → mais foice → mais hipóxia."},
+{t:"Eritroblastose fetal",d:"Anticorpos maternos anti-Rh atacam eritrócitos Rh+ do feto; a medula libera blastos em excesso."}]},
+{t:"Classificação pelo VCM",x:1,d:"Raciocínio clínico-laboratorial usual.",k:[
+{t:"Microcítica hipocrômica",d:"Ferropenia (perda crônica), talassemias, doença crônica."},
+{t:"Macrocítica",d:"Deficiência de B₁₂ ou folato (megaloblástica)."},
+{t:"Normocítica",d:"Hemorragia aguda, hemólise, aplasia, doença renal crônica (falta de EPO)."}]},
+{t:"Efeitos circulatórios",d:"Viscosidade cai (até ~1,5× a da água, normal ~3) → ↓ resistência periférica → ↑ retorno venoso. Hipóxia dilata vasos. Débito cardíaco sobe 3–4×. No esforço, risco de insuficiência cardíaca aguda."}]},
+{t:"🔴 Policitemia",c:"#a93a6b",d:"Excesso de eritrócitos.",k:[
+{t:"Secundária (fisiológica)",d:"Resposta à hipóxia: altitude (4.300–5.600 m), insuficiência cardíaca, doença pulmonar. 6–7 milhões/mm³, ~30% acima do normal."},
+{t:"Vera (eritremia)",d:"Anomalia genética nas células hemocitoblásticas, como um tumor. 7–8 milhões/mm³, Ht 60–70%; também ↑ leucócitos e plaquetas; volume sanguíneo total até 2× o normal.",k:[
+{t:"JAK2 e tratamento",x:1,d:"A maioria tem mutação JAK2 (V617F). Tratamento clássico: flebotomia para reduzir o hematócrito."}]},
+{t:"Viscosidade",d:"Sobe de ~3× a da água para até 10×. Capilares podem ser obstruídos."},
+{t:"Efeitos circulatórios",d:"Fluxo lento na periferia; retorno venoso ~normal (os fatores se anulam); PA normal na maioria (⅓ hipertensos). Pele rubicunda com tom azulado (cianose)."}]},
+{t:"🔢 Números-chave",c:"#566573",d:"Para revisão rápida.",k:[
+{t:"Eritrócitos",d:"H 5,2 milhões/mm³ · M 4,7 milhões/mm³."},
+{t:"Hb e Ht",d:"Hb 15 (H) / 14 (M) g/100 ml · Ht 40–45%."},
+{t:"Vida e reticulócitos",d:"120 dias · reticulócito 1–2 dias · <1% circulante."},
+{t:"EPO",d:"34.000 Da · 90% renal · pico <24 h · efeito ~5 dias."},
+{t:"Ferro",d:"4–5 g total · 65% Hb · perda 0,6 mg/dia (H), 1,3 (M)."},
+{t:"B₁₂",d:"1–3 µg/dia · reserva para 3–4 anos."}]}
+]});
+</script>
+<!-- ===== FIM DOS CAPÍTULOS ===== -->
+<script>
+const $=s=>document.querySelector(s),H=window.CHAPTERS;
+let done={},root,cur,sel;
+try{done=JSON.parse(localStorage.getItem('mm')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('mm',JSON.stringify(done))}catch(e){}};
+function ann(n,id,c,p){n.id=id;n.col=n.c||c;n.p=p;(n.k||[]).forEach((m,j)=>ann(m,id+'/'+j,n.col,n))}
+const all=n=>[n].concat(...(n.k||[]).map(all));
+H.forEach((c,i)=>{const o=document.createElement('option');o.value=i;o.textContent=c.title;$('#sl').appendChild(o);c.root={t:c.title,d:c.sub,k:c.k,c:'#3b4a6b'};ann(c.root,c.id,'#3b4a6b',null)});
+function load(i){root=H[i].root;cur=sel=root;render()}
+function go(n){if(n.k){cur=n;sel=n}else{cur=n.p;sel=n}render()}
+function render(){
+ const ks=cur.k,N=ks.length;let ln='',nd='';
+ ks.forEach((m,i)=>{const a=(-90+i*360/N)*Math.PI/180,X=50+38*Math.cos(a),Y=50+38*Math.sin(a);
+  ln+=`<line x1="50" y1="50" x2="${X}" y2="${Y}" stroke="${m.col}" stroke-width="2.5" vector-effect="non-scaling-stroke" opacity=".6"/>`;
+  nd+=`<div class="n${done[m.id]?' dn':''}${sel===m?' on':''}" data-i="${i}" style="left:${X}%;top:${Y}%;--c:${m.col};--i:${i}"><b>${m.t}</b>${m.k?`<small>▸ ${m.k.length} subtópicos</small>`:''}${m.x?'<i>+</i>':''}</div>`});
+ $('#st').innerHTML=`<svg viewBox="0 0 100 100" preserveAspectRatio="none">${ln}</svg><div class="ctr" style="--c:${cur.col}">${cur.t}</div>`+nd;
+ let bc='',x=cur,ch=[];while(x){ch.unshift(x);x=x.p}
+ ch.forEach((n,i)=>bc+=(i?' › ':'')+`<button data-b="${i}">${i?n.t:'🏠 Início'}</button>`);$('#bc').innerHTML=bc;$('#bc').chain=ch;
+ const s=sel;
+ $('#pn').innerHTML=`<div class="card" style="--c:${s.col}"><h2>${s.t}${s.x?'<span class="tag">complemento</span>':''}</h2><p>${s.d||''}</p>${s.k?'<div class="chips">'+s.k.map((m,i)=>`<button data-c="${i}">${m.t}</button>`).join('')+'</div>':''}<label><input type="checkbox" id="ck" ${done[s.id]?'checked':''}> Já estudei este tópico</label></div>`;
+ $('#ck').onchange=e=>{done[s.id]=e.target.checked;if(!e.target.checked)delete done[s.id];save();render()};
+ const lv=all(root).filter(n=>!n.k),d=lv.filter(n=>done[n.id]).length;
+ $('#prog').innerHTML=`${d}/${lv.length} tópicos finais estudados<i><b style="width:${100*d/lv.length}%"></b></i>`}
+$('#st').onclick=e=>{const n=e.target.closest('.n');if(n)go(cur.k[n.dataset.i]);else if(e.target.closest('.ctr')){sel=cur;render()}};
+$('#pn').onclick=e=>{const b=e.target.closest('[data-c]');if(b)go(sel.k[b.dataset.c])};
+$('#bc').onclick=e=>{const b=e.target.closest('[data-b]');if(b)go($('#bc').chain[b.dataset.b])};
+$('#sl').onchange=e=>load(e.target.value);
+$('#q').oninput=e=>{const v=e.target.value.trim().toLowerCase(),r=$('#res');r.innerHTML='';if(v.length<2)return;
+ const m=[];H.forEach(c=>all(c.root).forEach(n=>{if(n.p&&((n.t+' '+(n.d||'')).toLowerCase().includes(v)))m.push(n)}));
+ const d=document.createElement('div');m.slice(0,10).forEach(n=>{const b=document.createElement('button');b.innerHTML=`${n.t}<br><small>${n.p.t}</small>`;b.onclick=()=>{$('#sl').value=H.findIndex(c=>n.id.startsWith(c.id));root=H[$('#sl').value].root;go(n);r.innerHTML='';e.target.value=''};d.appendChild(b)});
+ if(!m.length)d.textContent=' Nada encontrado';r.appendChild(d)};
+load(0);
+</script></body></html>
